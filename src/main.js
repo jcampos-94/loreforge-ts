@@ -1,12 +1,32 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-console.log('LoreForge — World Engine');
-let worldName = 'LoreForge';
-console.log('World:', worldName);
-let factions = ['Guardians', 'Shadow Order', 'Wanderers'];
-factions.push('Iron Circle');
-console.log('Factions in the world:');
-for (let faction of factions) {
-    console.log('-', faction);
+import { DataLoader } from './core/DataLoader.js';
+import { Faction } from './models/Faction.js';
+import { Character } from './models/Character.js';
+//Factions
+const factions = [];
+const magesGuild = new Faction('Mages Guild', 'Archmage Solren', 80);
+const ironLegion = new Faction('Iron Legion', 'General Kael', 65);
+factions.push(magesGuild);
+factions.push(ironLegion);
+//Characters
+const characters = [];
+characters.push(new Character('Elyra', 'Mage', magesGuild));
+characters.push(new Character('Darion', 'Knight', ironLegion));
+async function main() {
+    //Startup
+    console.log('LoreForge — World Engine\n');
+    await DataLoader.ensureLoaded();
+    console.log('Engine ready.\n');
+    //Print Factions
+    console.log('Factions:');
+    for (const faction of factions) {
+        console.log(`Name: ${faction.name} | Leader: ${faction.leader} | Influence: ${faction.influence}`);
+    }
+    console.log();
+    //Print Characters
+    console.log('Characters:');
+    for (const character of characters) {
+        console.log(`Name: ${character.name} | Role: ${character.role} | Faction: ${character.faction.name}`);
+    }
 }
+main();
 //# sourceMappingURL=main.js.map
