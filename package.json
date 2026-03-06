@@ -1,0 +1,25 @@
+{
+  "name": "loreforge-ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node src/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jcampos-94/loreforge-ts.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/jcampos-94/loreforge-ts/issues"
+  },
+  "homepage": "https://github.com/jcampos-94/loreforge-ts#readme",
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}
