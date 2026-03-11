@@ -1,10 +1,10 @@
 export class Faction {
     name;
-    leader;
+    leaderName;
     influence;
-    constructor(name, leader, influence) {
+    constructor(name, leaderName, influence) {
         this.name = name;
-        this.leader = leader;
+        this.leaderName = leaderName;
         this.influence = influence;
     }
 }

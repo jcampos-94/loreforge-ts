@@ -1,11 +1,9 @@
 export class Faction {
   name: string;
-  leader: string;
-  influence: number;
+  leaderName: string;
 
-  constructor(name: string, leader: string, influence: number) {
+  constructor(name: string, leaderName: string) {
     this.name = name;
-    this.leader = leader;
-    this.influence = influence;
+    this.leaderName = leaderName;
   }
 }
