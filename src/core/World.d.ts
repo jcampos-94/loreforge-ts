@@ -4,7 +4,7 @@ export declare class World {
     factions: Faction[];
     characters: Character[];
     constructor();
-    addFaction(name: string, leaderName: string, influence: number): void;
+    addFaction(name: string, leaderName: string): void;
     deleteFaction(name: string): void;
     addCharacter(name: string, role: string, factionName: string, mentorName?: string): void;
     deleteCharacter(name: string): void;

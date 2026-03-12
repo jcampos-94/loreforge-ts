@@ -30,8 +30,19 @@ export class World {
 
     if (members.length > 1) {
       console.log('Warning: Cannot delete faction.');
-      console.log('Faction still has members.');
+      console.log('Faction still has at least two members.');
       return;
+    } else {
+      const leader = members[0];
+
+      if (!leader) {
+        console.log('Unexpected error determining leader.');
+        return;
+      }
+
+      this.characters = this.characters.filter((c) => c.name != leader.name);
+
+      console.log(`Leader ${leader.name} was removed.`);
     }
 
     this.factions = this.factions.filter((f) => f.name !== name);
@@ -87,6 +98,12 @@ export class World {
 
     const isLeader = faction.leaderName === character.name;
 
+    for (const character of this.characters) {
+      if (character.mentorName === name) {
+        character.mentorName = 'Unknown';
+      }
+    }
+
     //remove character
     this.characters = this.characters.filter((c) => c.name !== name);
 
@@ -120,6 +137,11 @@ export class World {
   }
 
   showFactions(): void {
+    if (this.factions.length === 0) {
+      console.log('\nNo factions found.');
+      return;
+    }
+
     console.log('\nFactions:');
 
     for (const faction of this.factions) {
@@ -128,6 +150,11 @@ export class World {
   }
 
   showCharacters(): void {
+    if (this.characters.length === 0) {
+      console.log('\nNo characters found.');
+      return;
+    }
+
     console.log('\nCharacters:');
 
     for (const character of this.characters) {

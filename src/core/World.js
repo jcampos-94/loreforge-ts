@@ -7,8 +7,8 @@ export class World {
         this.factions = [];
         this.characters = [];
     }
-    addFaction(name, leaderName, influence) {
-        const faction = new Faction(name, leaderName, influence);
+    addFaction(name, leaderName) {
+        const faction = new Faction(name, leaderName);
         this.factions.push(faction);
         const leader = new Character(leaderName, 'Leader', faction);
         this.characters.push(leader);
@@ -22,8 +22,17 @@ export class World {
         const members = this.characters.filter((c) => c.faction.name === name);
         if (members.length > 1) {
             console.log('Warning: Cannot delete faction.');
-            console.log('Faction still has members.');
+            console.log('Faction still has at least two members.');
             return;
+        }
+        else {
+            const leader = members[0];
+            if (!leader) {
+                console.log('Unexpected error determining leader.');
+                return;
+            }
+            this.characters = this.characters.filter((c) => c.name != leader.name);
+            console.log(`Leader ${leader.name} was removed.`);
         }
         this.factions = this.factions.filter((f) => f.name !== name);
         console.log(`Faction ${name} deleted.`);
@@ -33,6 +42,21 @@ export class World {
         if (!faction) {
             console.log('Faction not found.');
             return;
+        }
+        if (mentorName && mentorName !== 'Unknown') {
+            const mentor = this.characters.find((c) => c.name === mentorName);
+            if (!mentor) {
+                console.log('Mentor not found.');
+                return;
+            }
+            if (mentor.faction.name !== factionName) {
+                console.log('Mentor must belong to the same faction.');
+                return;
+            }
+            if (mentorName === name) {
+                console.log('A character cannot mentor themselves.');
+                return;
+            }
         }
         const character = new Character(name, role, faction, mentorName);
         this.characters.push(character);
@@ -45,6 +69,11 @@ export class World {
         }
         const faction = character.faction;
         const isLeader = faction.leaderName === character.name;
+        for (const character of this.characters) {
+            if (character.mentorName === name) {
+                character.mentorName = 'Unknown';
+            }
+        }
         //remove character
         this.characters = this.characters.filter((c) => c.name !== name);
         const remainingMembers = this.characters.filter((c) => c.faction.name === faction.name);
@@ -68,12 +97,20 @@ export class World {
         }
     }
     showFactions() {
+        if (this.factions.length === 0) {
+            console.log('\nNo factions found.');
+            return;
+        }
         console.log('\nFactions:');
         for (const faction of this.factions) {
-            console.log(`Name: ${faction.name} | Leader: ${faction.leaderName} | Influence: ${faction.influence}`);
+            console.log(`Name: ${faction.name} | Leader: ${faction.leaderName}`);
         }
     }
     showCharacters() {
+        if (this.characters.length === 0) {
+            console.log('\nNo characters found.');
+            return;
+        }
         console.log('\nCharacters:');
         for (const character of this.characters) {
             console.log(`Name: ${character.name} | Role: ${character.role} | Faction: ${character.faction.name}`);

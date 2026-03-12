@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/jcampos-94/loreforge-ts#readme",
   "devDependencies": {
+    "@types/node": "^25.4.0",
     "typescript": "^5.9.3"
   }
 }
