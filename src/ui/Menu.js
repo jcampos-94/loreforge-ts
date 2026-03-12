@@ -103,11 +103,14 @@ export class Menu {
         });
     }
     showMentorshipTree() {
-        console.log('Mentorship tree coming soon...');
-        this.pause();
+        this.rl.question('Enter character name: ', (name) => {
+            this.world.showMentorshipTree(name);
+            this.pause();
+        });
     }
     clearConsole() {
-        console.clear();
+        //console.clear();
+        process.stdout.write('\x1Bc');
     }
     pause() {
         this.rl.question('\nPress ENTER to continue...', () => {

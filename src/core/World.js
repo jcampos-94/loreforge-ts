@@ -69,9 +69,9 @@ export class World {
         }
         const faction = character.faction;
         const isLeader = faction.leaderName === character.name;
-        for (const character of this.characters) {
-            if (character.mentorName === name) {
-                character.mentorName = 'Unknown';
+        for (const student of this.characters) {
+            if (student.mentorName === name) {
+                student.mentorName = character.mentorName;
             }
         }
         //remove character
@@ -114,6 +114,22 @@ export class World {
         console.log('\nCharacters:');
         for (const character of this.characters) {
             console.log(`Name: ${character.name} | Role: ${character.role} | Faction: ${character.faction.name}`);
+        }
+    }
+    getStudents(mentorName) {
+        return this.characters.filter((c) => c.mentorName === mentorName);
+    }
+    showMentorshipTree(name, level = 0) {
+        const character = this.characters.find((c) => c.name === name);
+        if (!character) {
+            console.log('Character not found.');
+            return;
+        }
+        const indent = '  '.repeat(level);
+        console.log(`${indent}${character.name}`);
+        const students = this.getStudents(character.name);
+        for (const student of students) {
+            this.showMentorshipTree(student.name, level + 1);
         }
     }
 }

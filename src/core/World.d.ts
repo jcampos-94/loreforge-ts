@@ -10,5 +10,7 @@ export declare class World {
     deleteCharacter(name: string): void;
     showFactions(): void;
     showCharacters(): void;
+    getStudents(mentorName: string): Character[];
+    showMentorshipTree(name: string, level?: number): void;
 }
 //# sourceMappingURL=World.d.ts.map
