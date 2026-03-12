@@ -95,6 +95,9 @@ export class World {
                 console.log(`New leader of ${faction.name}: ${newLeader.name}`);
             }
         }
+        else {
+            console.log(`Character ${name} was deleted.`);
+        }
     }
     showFactions() {
         if (this.factions.length === 0) {
