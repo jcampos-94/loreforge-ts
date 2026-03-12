@@ -135,5 +135,12 @@ export class World {
             this.showMentorshipTree(student.name, level + 1);
         }
     }
+    // For testing
+    getFactions() {
+        return this.factions;
+    }
+    getCharacters() {
+        return this.characters;
+    }
 }
 //# sourceMappingURL=World.js.map
