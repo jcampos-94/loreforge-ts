@@ -1,0 +1,32 @@
+{
+  "characters": [
+    {
+      "name": "Lorthemar",
+      "role": "Leader",
+      "faction": {
+        "name": "Sin'dorei",
+        "leaderName": "Lorthemar"
+      },
+      "mentorName": "Unknown"
+    },
+    {
+      "name": "Sylvanas",
+      "role": "Leader",
+      "faction": {
+        "name": "Forsaken",
+        "leaderName": "Sylvanas"
+      },
+      "mentorName": "Unknown"
+    }
+  ],
+  "factions": [
+    {
+      "name": "Sin'dorei",
+      "leaderName": "Lorthemar"
+    },
+    {
+      "name": "Forsaken",
+      "leaderName": "Sylvanas"
+    }
+  ]
+}

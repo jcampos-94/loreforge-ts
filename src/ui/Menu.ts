@@ -89,6 +89,9 @@ export class Menu {
       this.rl.question('Leader name: ', (leader) => {
         this.world.addFaction(name, leader);
 
+        //save
+        this.world.saveWorld();
+
         console.log('Faction created.');
         this.pause();
       });
@@ -103,6 +106,11 @@ export class Menu {
             const mentorName = mentor.trim() === '' ? undefined : mentor;
 
             this.world.addCharacter(name, role, faction, mentorName);
+
+            //save
+            this.world.saveWorld();
+
+            console.log('Character created.');
             this.pause();
           });
         });
@@ -114,6 +122,9 @@ export class Menu {
     this.rl.question('Character name to delete: ', (name) => {
       this.world.deleteCharacter(name);
 
+      //save
+      this.world.saveWorld();
+
       this.pause();
     });
   }
@@ -121,6 +132,9 @@ export class Menu {
   private deleteFaction() {
     this.rl.question('Faction name to delete: ', (name) => {
       this.world.deleteFaction(name);
+
+      //save
+      this.world.saveWorld();
 
       this.pause();
     });

@@ -12,6 +12,9 @@ export declare class World {
     showCharacters(): void;
     getStudents(mentorName: string): Character[];
     showMentorshipTree(name: string, level?: number): void;
+    private worldFile;
+    saveWorld(): void;
+    loadWorld(): void;
     getFactions(): Faction[];
     getCharacters(): Character[];
 }

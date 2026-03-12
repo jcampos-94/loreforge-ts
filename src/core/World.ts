@@ -1,4 +1,5 @@
 import fs from 'fs';
+import path from 'path';
 
 import { Faction } from '../models/Faction.js';
 import { Character } from '../models/Character.js';
@@ -192,25 +193,47 @@ export class World {
   }
 
   // Saving/Loading Data
+  private worldFile = path.join('data', 'world.json');
+
   saveWorld(): void {
     const data = {
       characters: this.characters,
       factions: this.factions,
     };
 
-    fs.writeFileSync('world.json', JSON.stringify(data, null, 2), 'utf-8');
+    // Ensure data folder exists
+    if (!fs.existsSync('data')) {
+      fs.mkdirSync('data');
+    }
+
+    fs.writeFileSync(this.worldFile, JSON.stringify(data, null, 2), 'utf-8');
   }
 
   loadWorld(): void {
-    if (!fs.existsSync('world.json')) {
-      return;
+    try {
+      if (!fs.existsSync(this.worldFile)) {
+        return;
+      }
+
+      const raw = fs.readFileSync(this.worldFile, 'utf-8');
+
+      // Prevent crash if file is empty
+      if (!raw.trim()) return;
+
+      const data = JSON.parse(raw);
+
+      this.factions = data.factions || [];
+      const factionMap = new Map(this.factions.map((f: any) => [f.name, f]));
+
+      this.characters = (data.characters || []).map((c: any) => ({
+        ...c,
+        faction: factionMap.get(c.faction.name),
+      }));
+    } catch {
+      console.log('Warning: world.json corrupted. Starting empty.');
+      this.characters = [];
+      this.factions = [];
     }
-
-    const raw = fs.readFileSync('world.json', 'utf-8');
-    const data = JSON.parse(raw);
-
-    this.characters = data.characters || [];
-    this.factions = data.factions || [];
   }
 
   // For testing

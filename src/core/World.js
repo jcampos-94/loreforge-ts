@@ -1,3 +1,5 @@
+import fs from 'fs';
+import path from 'path';
 import { Faction } from '../models/Faction.js';
 import { Character } from '../models/Character.js';
 export class World {
@@ -133,6 +135,42 @@ export class World {
         const students = this.getStudents(character.name);
         for (const student of students) {
             this.showMentorshipTree(student.name, level + 1);
+        }
+    }
+    // Saving/Loading Data
+    worldFile = path.join('data', 'world.json');
+    saveWorld() {
+        const data = {
+            characters: this.characters,
+            factions: this.factions,
+        };
+        // Ensure data folder exists
+        if (!fs.existsSync('data')) {
+            fs.mkdirSync('data');
+        }
+        fs.writeFileSync(this.worldFile, JSON.stringify(data, null, 2), 'utf-8');
+    }
+    loadWorld() {
+        try {
+            if (!fs.existsSync(this.worldFile)) {
+                return;
+            }
+            const raw = fs.readFileSync(this.worldFile, 'utf-8');
+            // Prevent crash if file is empty
+            if (!raw.trim())
+                return;
+            const data = JSON.parse(raw);
+            this.factions = data.factions || [];
+            const factionMap = new Map(this.factions.map((f) => [f.name, f]));
+            this.characters = (data.characters || []).map((c) => ({
+                ...c,
+                faction: factionMap.get(c.faction.name),
+            }));
+        }
+        catch {
+            console.log('Warning: world.json corrupted. Starting empty.');
+            this.characters = [];
+            this.factions = [];
         }
     }
     // For testing
