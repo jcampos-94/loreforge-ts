@@ -1,3 +1,5 @@
+import fs from 'fs';
+
 import { Faction } from '../models/Faction.js';
 import { Character } from '../models/Character.js';
 
@@ -187,5 +189,36 @@ export class World {
     for (const student of students) {
       this.showMentorshipTree(student.name, level + 1);
     }
+  }
+
+  // Saving/Loading Data
+  saveWorld(): void {
+    const data = {
+      characters: this.characters,
+      factions: this.factions,
+    };
+
+    fs.writeFileSync('world.json', JSON.stringify(data, null, 2), 'utf-8');
+  }
+
+  loadWorld(): void {
+    if (!fs.existsSync('world.json')) {
+      return;
+    }
+
+    const raw = fs.readFileSync('world.json', 'utf-8');
+    const data = JSON.parse(raw);
+
+    this.characters = data.characters || [];
+    this.factions = data.factions || [];
+  }
+
+  // For testing
+  getFactions() {
+    return this.factions;
+  }
+
+  getCharacters() {
+    return this.characters;
   }
 }
