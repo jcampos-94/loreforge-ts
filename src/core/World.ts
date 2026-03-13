@@ -261,6 +261,8 @@ export class World {
       const data = JSON.parse(raw);
 
       this.factions = data.factions || [];
+
+      // Rebuild object references: Link each character back to its corresponding Faction instance
       const factionMap = new Map(this.factions.map((f: any) => [f.name, f]));
 
       this.characters = (data.characters || []).map((c: any) => ({
