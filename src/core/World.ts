@@ -4,6 +4,9 @@ import path from 'path';
 import { Faction } from '../models/Faction.js';
 import { Character } from '../models/Character.js';
 
+/**
+ * Manages the state, persistence, and business logic for all factions and characters.
+ */
 export class World {
   factions: Faction[];
   characters: Character[];
@@ -13,14 +16,21 @@ export class World {
     this.characters = [];
   }
 
+  /**
+   * Creates a new faction and automatically assigns the first leader as a character.
+   */
   addFaction(name: string, leaderName: string): void {
     const faction = new Faction(name, leaderName);
     this.factions.push(faction);
 
+    // Create and push the faction
     const leader = new Character(leaderName, 'Leader', faction);
     this.characters.push(leader);
   }
 
+  /**
+   * Removes a faction. Fails if more than just the leader remains.
+   */
   deleteFaction(name: string): void {
     const faction = this.factions.find((f) => f.name === name);
 
@@ -31,6 +41,7 @@ export class World {
 
     const members = this.characters.filter((c) => c.faction.name === name);
 
+    // Prevent deletion if the faction is still populated
     if (members.length > 1) {
       console.log('Warning: Cannot delete faction.');
       console.log('Faction still has at least two members.');
@@ -43,16 +54,20 @@ export class World {
         return;
       }
 
+      // Cleanup the last remaining member (the leader)
       this.characters = this.characters.filter((c) => c.name != leader.name);
 
       console.log(`Leader ${leader.name} was removed.`);
     }
 
+    // Delete the faction
     this.factions = this.factions.filter((f) => f.name !== name);
-
     console.log(`Faction ${name} deleted.`);
   }
 
+  /**
+   * Registers a new character with validation for faction existence and mentor compatibility.
+   */
   addCharacter(
     name: string,
     role: string,
@@ -66,6 +81,7 @@ export class World {
       return;
     }
 
+    // Validation: Mentor must exist, be in the same faction, and not be the same person
     if (mentorName && mentorName !== 'Unknown') {
       const mentor = this.characters.find((c) => c.name === mentorName);
 
@@ -85,10 +101,15 @@ export class World {
       }
     }
 
+    // Create and push the character
     const character = new Character(name, role, faction, mentorName);
     this.characters.push(character);
   }
 
+  /**
+   * Removes a character. If they were a leader, promotes the next available member.
+   * If they were a mentor, their students are reassigned to the mentor's own mentor.
+   */
   deleteCharacter(name: string): void {
     const character = this.characters.find((c) => c.name === name);
 
@@ -101,13 +122,14 @@ export class World {
 
     const isLeader = faction.leaderName === character.name;
 
+    // Inherit mentorship: Students of the deleted character move to the character's mentor
     for (const student of this.characters) {
       if (student.mentorName === name) {
         student.mentorName = character.mentorName;
       }
     }
 
-    //remove character
+    // Delete the character
     this.characters = this.characters.filter((c) => c.name !== name);
 
     const remainingMembers = this.characters.filter(
@@ -116,13 +138,14 @@ export class World {
 
     if (isLeader) {
       if (remainingMembers.length === 0) {
+        // Cascade delete: Remove empty faction if leader was the last member
         console.log(`Leader ${name} removed.`);
         console.log(
           `Faction ${faction.name} has no members and will be deleted.`,
         );
-
         this.factions = this.factions.filter((f) => f.name !== faction.name);
       } else {
+        // Succession: Promote the first found member to Leader
         const newLeader = remainingMembers[0];
 
         if (!newLeader) {
@@ -141,6 +164,7 @@ export class World {
     }
   }
 
+  // Show factions in the console
   showFactions(): void {
     if (this.factions.length === 0) {
       console.log('\nNo factions found.');
@@ -154,6 +178,7 @@ export class World {
     }
   }
 
+  // Show characters in the console
   showCharacters(): void {
     if (this.characters.length === 0) {
       console.log('\nNo characters found.');
@@ -169,10 +194,16 @@ export class World {
     }
   }
 
+  /**
+   * Retrieves all characters who list the given name as their mentor.
+   */
   getStudents(mentorName: string): Character[] {
     return this.characters.filter((c) => c.mentorName === mentorName);
   }
 
+  /**
+   * Recursively prints the mentorship hierarchy starting from a specific character.
+   */
   showMentorshipTree(name: string, level: number = 0): void {
     const character = this.characters.find((c) => c.name === name);
 
@@ -192,9 +223,12 @@ export class World {
     }
   }
 
-  // Saving/Loading Data
+  // Saving/Loading Data logic
   private worldFile = path.join('data', 'world.json');
 
+  /**
+   * Serializes current state and writes to the local JSON data store.
+   */
   async saveWorld(): Promise<void> {
     const data = {
       characters: this.characters,
@@ -214,6 +248,9 @@ export class World {
     }
   }
 
+  /**
+   * Reads world data and rebuilds relationships between objects in memory.
+   */
   async loadWorld(): Promise<void> {
     try {
       const raw = await fs.readFile(this.worldFile, 'utf-8');
