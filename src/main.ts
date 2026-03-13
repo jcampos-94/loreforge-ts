@@ -3,7 +3,7 @@ import { World } from './core/World.js';
 import { Menu } from './ui/Menu.js';
 
 const world = new World();
-world.loadWorld();
+await world.loadWorld();
 
 const menu = new Menu(world);
 

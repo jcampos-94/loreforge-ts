@@ -1,4 +1,4 @@
-import fs from 'fs';
+import { promises as fs } from 'fs';
 import path from 'path';
 
 import { Faction } from '../models/Faction.js';
@@ -195,27 +195,28 @@ export class World {
   // Saving/Loading Data
   private worldFile = path.join('data', 'world.json');
 
-  saveWorld(): void {
+  async saveWorld(): Promise<void> {
     const data = {
       characters: this.characters,
       factions: this.factions,
     };
 
-    // Ensure data folder exists
-    if (!fs.existsSync('data')) {
-      fs.mkdirSync('data');
-    }
+    try {
+      await fs.mkdir('data', { recursive: true });
 
-    fs.writeFileSync(this.worldFile, JSON.stringify(data, null, 2), 'utf-8');
+      await fs.writeFile(
+        this.worldFile,
+        JSON.stringify(data, null, 2),
+        'utf-8',
+      );
+    } catch (error) {
+      console.log('Error saving world:', error);
+    }
   }
 
-  loadWorld(): void {
+  async loadWorld(): Promise<void> {
     try {
-      if (!fs.existsSync(this.worldFile)) {
-        return;
-      }
-
-      const raw = fs.readFileSync(this.worldFile, 'utf-8');
+      const raw = await fs.readFile(this.worldFile, 'utf-8');
 
       // Prevent crash if file is empty
       if (!raw.trim()) return;

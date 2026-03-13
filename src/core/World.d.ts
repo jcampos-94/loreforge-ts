@@ -13,8 +13,8 @@ export declare class World {
     getStudents(mentorName: string): Character[];
     showMentorshipTree(name: string, level?: number): void;
     private worldFile;
-    saveWorld(): void;
-    loadWorld(): void;
+    saveWorld(): Promise<void>;
+    loadWorld(): Promise<void>;
     getFactions(): Faction[];
     getCharacters(): Character[];
 }
