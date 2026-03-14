@@ -6,8 +6,6 @@ I developed **LoreForge**, a command-line world-building engine built in TypeScr
 
 The purpose of writing this software was to bridge the gap between high-level architectural planning and low-level data persistence. I specifically wanted to practice "Data Rehydration"—the process of rebuilding complex object references from flat JSON files—to ensure that my application remains modular and scalable.
 
-[Software Demo Video](http://youtube.link.goes.here)
-
 # Development Environment
 
 I utilized a modern development stack focused on developer experience and rigorous testing:
@@ -22,6 +20,15 @@ I utilized a modern development stack focused on developer experience and rigoro
 - **Node:readline**: Leveraged for handling asynchronous user input in the terminal.
 - **Jest**: Integrated as the testing framework to verify business logic via unit tests.
 - **Node:fs (Promises)**: Used for asynchronous file system operations to persist data in JSON format.
+
+**Execution Instructions:**
+
+To run this project locally, follow these steps in your terminal:
+
+1. **Install dependencies**: `npm install`
+2. **Build the project**: `npm run build`
+3. **Start the application**: `npm run start`
+4. **Run the test suite**: `npm test`
 
 # Useful Websites
 
