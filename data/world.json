@@ -422,6 +422,87 @@
         "leaderName": "Velen"
       },
       "mentorName": "Unknown"
+    },
+    {
+      "name": "Keley Steelspark",
+      "role": "Spec Ops Agent",
+      "faction": {
+        "name": "Gnomes",
+        "leaderName": "Gelbin Mekkatorque"
+      },
+      "mentorName": "Unknown"
+    },
+    {
+      "name": "Millhouse Manastorm",
+      "role": "Archmage",
+      "faction": {
+        "name": "Gnomes",
+        "leaderName": "Gelbin Mekkatorque"
+      },
+      "mentorName": "Unknown"
+    },
+    {
+      "name": "Victoire",
+      "role": "Duskwatch Commander",
+      "faction": {
+        "name": "Shal'dorei",
+        "leaderName": "Thalyssra"
+      },
+      "mentorName": "Thalyssra"
+    },
+    {
+      "name": "Silgryn",
+      "role": "Spellblade",
+      "faction": {
+        "name": "Shal'dorei",
+        "leaderName": "Thalyssra"
+      },
+      "mentorName": "Unknown"
+    },
+    {
+      "name": "Umbric",
+      "role": "Magister",
+      "faction": {
+        "name": "Ren'dorei",
+        "leaderName": "Alleria Windrunner"
+      },
+      "mentorName": "Unknown"
+    },
+    {
+      "name": "Loti",
+      "role": "Wardruid",
+      "faction": {
+        "name": "Zandalari Trolls",
+        "leaderName": "Talanji"
+      },
+      "mentorName": "Unknown"
+    },
+    {
+      "name": "Raal",
+      "role": "Prelate",
+      "faction": {
+        "name": "Zandalari Trolls",
+        "leaderName": "Talanji"
+      },
+      "mentorName": "Unknown"
+    },
+    {
+      "name": "Adelgonn",
+      "role": "Stoneward",
+      "faction": {
+        "name": "Earthen",
+        "leaderName": "Dagran"
+      },
+      "mentorName": "Unknown"
+    },
+    {
+      "name": "Cindrethresh",
+      "role": "Scalecommander",
+      "faction": {
+        "name": "Dracthyr",
+        "leaderName": "Emberthal"
+      },
+      "mentorName": "Unknown"
     }
   ],
   "factions": [
