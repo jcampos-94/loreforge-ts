@@ -19,7 +19,12 @@ export class World {
   /**
    * Creates a new faction and automatically assigns the first leader as a character.
    */
-  addFaction(name: string, leaderName: string): void {
+  addFaction(name: string, leaderName: string): boolean {
+    if (!name.trim() || !leaderName.trim()) {
+      console.log('Error: Faction name and Leader name are required.');
+      return false;
+    }
+
     const faction = new Faction(
       this.formatName(name),
       this.formatName(leaderName),
@@ -33,6 +38,7 @@ export class World {
       faction,
     );
     this.characters.push(leader);
+    return true;
   }
 
   /**
@@ -84,14 +90,14 @@ export class World {
     role: string,
     factionName: string,
     mentorName?: string,
-  ): void {
+  ): boolean {
     const faction = this.factions.find(
       (f) => f.name === this.formatName(factionName),
     );
 
     if (!faction) {
       console.log('Faction not found.');
-      return;
+      return false;
     }
 
     // Validation: Mentor must exist, be in the same faction, and not be the same person
@@ -106,17 +112,17 @@ export class World {
 
       if (!mentor) {
         console.log('Mentor not found.');
-        return;
+        return false;
       }
 
       if (mentor.faction.name !== this.formatName(factionName)) {
         console.log('Mentor must belong to the same faction.');
-        return;
+        return false;
       }
 
       if (mentorName === this.formatName(name)) {
         console.log('A character cannot mentor themselves.');
-        return;
+        return false;
       }
     }
 
@@ -128,6 +134,7 @@ export class World {
       mentorName ? this.formatName(mentorName) : undefined,
     );
     this.characters.push(character);
+    return true;
   }
 
   /**
@@ -322,6 +329,7 @@ export class World {
    */
   private formatName(name: string): string {
     return name
+      .trim()
       .toLowerCase()
       .split(' ')
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
