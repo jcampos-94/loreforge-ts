@@ -1,4 +1,533 @@
 {
-  "characters": [],
-  "factions": []
+  "characters": [
+    {
+      "name": "Thrall",
+      "role": "Leader",
+      "faction": {
+        "name": "Orcs",
+        "leaderName": "Thrall"
+      },
+      "mentorName": "Unknown"
+    },
+    {
+      "name": "Sylvanas Windrunner",
+      "role": "Leader",
+      "faction": {
+        "name": "Forsaken",
+        "leaderName": "Sylvanas Windrunner"
+      },
+      "mentorName": "Unknown"
+    },
+    {
+      "name": "Vol'jin",
+      "role": "Leader",
+      "faction": {
+        "name": "Darkspear Trolls",
+        "leaderName": "Vol'jin"
+      },
+      "mentorName": "Unknown"
+    },
+    {
+      "name": "Cairne Bloodhoof",
+      "role": "Leader",
+      "faction": {
+        "name": "Tauren",
+        "leaderName": "Cairne Bloodhoof"
+      },
+      "mentorName": "Unknown"
+    },
+    {
+      "name": "Lor'themar Theron",
+      "role": "Leader",
+      "faction": {
+        "name": "Sin'dorei",
+        "leaderName": "Lor'themar Theron"
+      },
+      "mentorName": "Unknown"
+    },
+    {
+      "name": "Jastor Gallywix",
+      "role": "Leader",
+      "faction": {
+        "name": "Bilgewater Goblins",
+        "leaderName": "Jastor Gallywix"
+      },
+      "mentorName": "Unknown"
+    },
+    {
+      "name": "Thalyssra",
+      "role": "Leader",
+      "faction": {
+        "name": "Shal'dorei",
+        "leaderName": "Thalyssra"
+      },
+      "mentorName": "Unknown"
+    },
+    {
+      "name": "Mayla Highmountain",
+      "role": "Leader",
+      "faction": {
+        "name": "Highmountain Tauren",
+        "leaderName": "Mayla Highmountain"
+      },
+      "mentorName": "Unknown"
+    },
+    {
+      "name": "Geya'rah",
+      "role": "Leader",
+      "faction": {
+        "name": "Mag'har",
+        "leaderName": "Geya'rah"
+      },
+      "mentorName": "Unknown"
+    },
+    {
+      "name": "Talanji",
+      "role": "Leader",
+      "faction": {
+        "name": "Zandalari Trolls",
+        "leaderName": "Talanji"
+      },
+      "mentorName": "Unknown"
+    },
+    {
+      "name": "Kiro",
+      "role": "Leader",
+      "faction": {
+        "name": "Vulpera",
+        "leaderName": "Kiro"
+      },
+      "mentorName": "Unknown"
+    },
+    {
+      "name": "Varian Wrynn",
+      "role": "Leader",
+      "faction": {
+        "name": "Humans",
+        "leaderName": "Varian Wrynn"
+      },
+      "mentorName": "Unknown"
+    },
+    {
+      "name": "Tyrande Whisperwind",
+      "role": "Leader",
+      "faction": {
+        "name": "Kaldorei",
+        "leaderName": "Tyrande Whisperwind"
+      },
+      "mentorName": "Unknown"
+    },
+    {
+      "name": "Magni Bronzebeard",
+      "role": "Leader",
+      "faction": {
+        "name": "Ironforge Dwarves",
+        "leaderName": "Magni Bronzebeard"
+      },
+      "mentorName": "Unknown"
+    },
+    {
+      "name": "Gelbin Mekkatorque",
+      "role": "Leader",
+      "faction": {
+        "name": "Gnomes",
+        "leaderName": "Gelbin Mekkatorque"
+      },
+      "mentorName": "Unknown"
+    },
+    {
+      "name": "Velen",
+      "role": "Leader",
+      "faction": {
+        "name": "Draenei",
+        "leaderName": "Velen"
+      },
+      "mentorName": "Unknown"
+    },
+    {
+      "name": "Genn Greymane",
+      "role": "Leader",
+      "faction": {
+        "name": "Gilneans",
+        "leaderName": "Genn Greymane"
+      },
+      "mentorName": "Unknown"
+    },
+    {
+      "name": "Alleria Windrunner",
+      "role": "Leader",
+      "faction": {
+        "name": "Ren'dorei",
+        "leaderName": "Alleria Windrunner"
+      },
+      "mentorName": "Unknown"
+    },
+    {
+      "name": "Turalyon",
+      "role": "Leader",
+      "faction": {
+        "name": "Lightforged",
+        "leaderName": "Turalyon"
+      },
+      "mentorName": "Unknown"
+    },
+    {
+      "name": "Moira Thaurissan",
+      "role": "Leader",
+      "faction": {
+        "name": "Dark Iron Dwarves",
+        "leaderName": "Moira Thaurissan"
+      },
+      "mentorName": "Unknown"
+    },
+    {
+      "name": "Jaina Proudmoore",
+      "role": "Leader",
+      "faction": {
+        "name": "Kul Tirans",
+        "leaderName": "Jaina Proudmoore"
+      },
+      "mentorName": "Unknown"
+    },
+    {
+      "name": "Erazmin",
+      "role": "Leader",
+      "faction": {
+        "name": "Mechagnomes",
+        "leaderName": "Erazmin"
+      },
+      "mentorName": "Unknown"
+    },
+    {
+      "name": "Aysa Cloudsinger",
+      "role": "Leader",
+      "faction": {
+        "name": "Tushui Pandaren",
+        "leaderName": "Aysa Cloudsinger"
+      },
+      "mentorName": "Unknown"
+    },
+    {
+      "name": "Ji Firepaw",
+      "role": "Leader",
+      "faction": {
+        "name": "Huojin Pandaren",
+        "leaderName": "Ji Firepaw"
+      },
+      "mentorName": "Unknown"
+    },
+    {
+      "name": "Emberthal",
+      "role": "Leader",
+      "faction": {
+        "name": "Dracthyr",
+        "leaderName": "Emberthal"
+      },
+      "mentorName": "Unknown"
+    },
+    {
+      "name": "Dagran",
+      "role": "Leader",
+      "faction": {
+        "name": "Earthen",
+        "leaderName": "Dagran"
+      },
+      "mentorName": "Unknown"
+    },
+    {
+      "name": "Eitrigg",
+      "role": "Advisor",
+      "faction": {
+        "name": "Orcs",
+        "leaderName": "Thrall"
+      },
+      "mentorName": "Unknown"
+    },
+    {
+      "name": "Nazgrel",
+      "role": "Guard Captain",
+      "faction": {
+        "name": "Orcs",
+        "leaderName": "Thrall"
+      },
+      "mentorName": "Unknown"
+    },
+    {
+      "name": "Nathanos Blightcaller",
+      "role": "Ranger Lord",
+      "faction": {
+        "name": "Forsaken",
+        "leaderName": "Sylvanas Windrunner"
+      },
+      "mentorName": "Sylvanas Windrunner"
+    },
+    {
+      "name": "Faranell",
+      "role": "Master Apothecary",
+      "faction": {
+        "name": "Forsaken",
+        "leaderName": "Sylvanas Windrunner"
+      },
+      "mentorName": "Unknown"
+    },
+    {
+      "name": "Rommath",
+      "role": "Grand Magister",
+      "faction": {
+        "name": "Sin'dorei",
+        "leaderName": "Lor'themar Theron"
+      },
+      "mentorName": "Unknown"
+    },
+    {
+      "name": "Liadrin",
+      "role": "Blood Knight Matriarch",
+      "faction": {
+        "name": "Sin'dorei",
+        "leaderName": "Lor'themar Theron"
+      },
+      "mentorName": "Unknown"
+    },
+    {
+      "name": "Halduron Brightwing",
+      "role": "Ranger General",
+      "faction": {
+        "name": "Forsaken",
+        "leaderName": "Sylvanas Windrunner"
+      },
+      "mentorName": "Sylvanas Windrunner"
+    },
+    {
+      "name": "Rokhan",
+      "role": "Shadow Hunter",
+      "faction": {
+        "name": "Darkspear Trolls",
+        "leaderName": "Vol'jin"
+      },
+      "mentorName": "Vol'jin"
+    },
+    {
+      "name": "Gadrin",
+      "role": "Witch Doctor",
+      "faction": {
+        "name": "Darkspear Trolls",
+        "leaderName": "Vol'jin"
+      },
+      "mentorName": "Unknown"
+    },
+    {
+      "name": "Baine Bloodhoof",
+      "role": "Warrior",
+      "faction": {
+        "name": "Tauren",
+        "leaderName": "Cairne Bloodhoof"
+      },
+      "mentorName": "Cairne Bloodhoof"
+    },
+    {
+      "name": "Hamuul Runetotem",
+      "role": "Archdruid",
+      "faction": {
+        "name": "Tauren",
+        "leaderName": "Cairne Bloodhoof"
+      },
+      "mentorName": "Unknown"
+    },
+    {
+      "name": "Dezco",
+      "role": "Sunwalker",
+      "faction": {
+        "name": "Tauren",
+        "leaderName": "Cairne Bloodhoof"
+      },
+      "mentorName": "Unknown"
+    },
+    {
+      "name": "Anduin Wrynn",
+      "role": "Prince",
+      "faction": {
+        "name": "Humans",
+        "leaderName": "Varian Wrynn"
+      },
+      "mentorName": "Varian Wrynn"
+    },
+    {
+      "name": "Sneed",
+      "role": "Scribe",
+      "faction": {
+        "name": "Humans",
+        "leaderName": "Varian Wrynn"
+      },
+      "mentorName": "Unknown"
+    },
+    {
+      "name": "Mathias Shaw",
+      "role": "Master Spy",
+      "faction": {
+        "name": "Humans",
+        "leaderName": "Varian Wrynn"
+      },
+      "mentorName": "Unknown"
+    },
+    {
+      "name": "Malfurion Stormrage",
+      "role": "Archdruid",
+      "faction": {
+        "name": "Kaldorei",
+        "leaderName": "Tyrande Whisperwind"
+      },
+      "mentorName": "Unknown"
+    },
+    {
+      "name": "Maiev Shadowsong",
+      "role": "Warden",
+      "faction": {
+        "name": "Kaldorei",
+        "leaderName": "Tyrande Whisperwind"
+      },
+      "mentorName": "Unknown"
+    },
+    {
+      "name": "Shandris Feathermoon",
+      "role": "Sentinel",
+      "faction": {
+        "name": "Kaldorei",
+        "leaderName": "Tyrande Whisperwind"
+      },
+      "mentorName": "Tyrande Whisperwind"
+    },
+    {
+      "name": "Falstad Wildhammer",
+      "role": "High Tane",
+      "faction": {
+        "name": "Ironforge Dwarves",
+        "leaderName": "Magni Bronzebeard"
+      },
+      "mentorName": "Unknown"
+    },
+    {
+      "name": "Naielle",
+      "role": "Exarch",
+      "faction": {
+        "name": "Draenei",
+        "leaderName": "Velen"
+      },
+      "mentorName": "Unknown"
+    },
+    {
+      "name": "Maraad",
+      "role": "Vindicator",
+      "faction": {
+        "name": "Draenei",
+        "leaderName": "Velen"
+      },
+      "mentorName": "Unknown"
+    }
+  ],
+  "factions": [
+    {
+      "name": "Orcs",
+      "leaderName": "Thrall"
+    },
+    {
+      "name": "Forsaken",
+      "leaderName": "Sylvanas Windrunner"
+    },
+    {
+      "name": "Darkspear Trolls",
+      "leaderName": "Vol'jin"
+    },
+    {
+      "name": "Tauren",
+      "leaderName": "Cairne Bloodhoof"
+    },
+    {
+      "name": "Sin'dorei",
+      "leaderName": "Lor'themar Theron"
+    },
+    {
+      "name": "Bilgewater Goblins",
+      "leaderName": "Jastor Gallywix"
+    },
+    {
+      "name": "Shal'dorei",
+      "leaderName": "Thalyssra"
+    },
+    {
+      "name": "Highmountain Tauren",
+      "leaderName": "Mayla Highmountain"
+    },
+    {
+      "name": "Mag'har",
+      "leaderName": "Geya'rah"
+    },
+    {
+      "name": "Zandalari Trolls",
+      "leaderName": "Talanji"
+    },
+    {
+      "name": "Vulpera",
+      "leaderName": "Kiro"
+    },
+    {
+      "name": "Humans",
+      "leaderName": "Varian Wrynn"
+    },
+    {
+      "name": "Kaldorei",
+      "leaderName": "Tyrande Whisperwind"
+    },
+    {
+      "name": "Ironforge Dwarves",
+      "leaderName": "Magni Bronzebeard"
+    },
+    {
+      "name": "Gnomes",
+      "leaderName": "Gelbin Mekkatorque"
+    },
+    {
+      "name": "Draenei",
+      "leaderName": "Velen"
+    },
+    {
+      "name": "Gilneans",
+      "leaderName": "Genn Greymane"
+    },
+    {
+      "name": "Ren'dorei",
+      "leaderName": "Alleria Windrunner"
+    },
+    {
+      "name": "Lightforged",
+      "leaderName": "Turalyon"
+    },
+    {
+      "name": "Dark Iron Dwarves",
+      "leaderName": "Moira Thaurissan"
+    },
+    {
+      "name": "Kul Tirans",
+      "leaderName": "Jaina Proudmoore"
+    },
+    {
+      "name": "Mechagnomes",
+      "leaderName": "Erazmin"
+    },
+    {
+      "name": "Tushui Pandaren",
+      "leaderName": "Aysa Cloudsinger"
+    },
+    {
+      "name": "Huojin Pandaren",
+      "leaderName": "Ji Firepaw"
+    },
+    {
+      "name": "Dracthyr",
+      "leaderName": "Emberthal"
+    },
+    {
+      "name": "Earthen",
+      "leaderName": "Dagran"
+    }
+  ]
 }

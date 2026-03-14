@@ -16,11 +16,16 @@ export class World {
      * Creates a new faction and automatically assigns the first leader as a character.
      */
     addFaction(name, leaderName) {
+        if (!name.trim() || !leaderName.trim()) {
+            console.log('Error: Faction name and Leader name are required.');
+            return false;
+        }
         const faction = new Faction(this.formatName(name), this.formatName(leaderName));
         this.factions.push(faction);
         // Create and push the faction
         const leader = new Character(this.formatName(leaderName), 'Leader', faction);
         this.characters.push(leader);
+        return true;
     }
     /**
      * Removes a faction. Fails if more than just the leader remains.
@@ -59,7 +64,7 @@ export class World {
         const faction = this.factions.find((f) => f.name === this.formatName(factionName));
         if (!faction) {
             console.log('Faction not found.');
-            return;
+            return false;
         }
         // Validation: Mentor must exist, be in the same faction, and not be the same person
         if ((mentorName ? this.formatName(mentorName) : undefined) &&
@@ -67,20 +72,21 @@ export class World {
             const mentor = this.characters.find((c) => c.name === (mentorName ? this.formatName(mentorName) : undefined));
             if (!mentor) {
                 console.log('Mentor not found.');
-                return;
+                return false;
             }
             if (mentor.faction.name !== this.formatName(factionName)) {
                 console.log('Mentor must belong to the same faction.');
-                return;
+                return false;
             }
             if (mentorName === this.formatName(name)) {
                 console.log('A character cannot mentor themselves.');
-                return;
+                return false;
             }
         }
         // Create and push the character
         const character = new Character(this.formatName(name), this.formatName(role), faction, mentorName ? this.formatName(mentorName) : undefined);
         this.characters.push(character);
+        return true;
     }
     /**
      * Removes a character. If they were a leader, promotes the next available member.
@@ -226,6 +232,7 @@ export class World {
      */
     formatName(name) {
         return name
+            .trim()
             .toLowerCase()
             .split(' ')
             .map((word) => word.charAt(0).toUpperCase() + word.slice(1))

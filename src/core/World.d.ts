@@ -10,7 +10,7 @@ export declare class World {
     /**
      * Creates a new faction and automatically assigns the first leader as a character.
      */
-    addFaction(name: string, leaderName: string): void;
+    addFaction(name: string, leaderName: string): boolean;
     /**
      * Removes a faction. Fails if more than just the leader remains.
      */
@@ -18,7 +18,7 @@ export declare class World {
     /**
      * Registers a new character with validation for faction existence and mentor compatibility.
      */
-    addCharacter(name: string, role: string, factionName: string, mentorName?: string): void;
+    addCharacter(name: string, role: string, factionName: string, mentorName?: string): boolean;
     /**
      * Removes a character. If they were a leader, promotes the next available member.
      * If they were a mentor, their students are reassigned to the mentor's own mentor.

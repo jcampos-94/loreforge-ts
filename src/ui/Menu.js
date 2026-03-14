@@ -87,9 +87,11 @@ export class Menu {
     addFaction() {
         this.rl.question('Faction name: ', (name) => {
             this.rl.question('Leader name: ', (leader) => {
-                this.world.addFaction(name, leader);
-                this.world.saveWorld(); // Persist changes to storage
-                console.log('Faction created.');
+                const success = this.world.addFaction(name, leader);
+                if (success) {
+                    this.world.saveWorld(); // Persist changes to storage
+                    console.log('Faction created.');
+                }
                 this.pause();
             });
         });
@@ -105,9 +107,11 @@ export class Menu {
                         // Treat empty strings as undefined for optional mentorship
                         // It will translate into "Unknown" thanks to the Character class
                         const mentorName = mentor.trim() === '' ? undefined : mentor;
-                        this.world.addCharacter(name, role, faction, mentorName);
-                        this.world.saveWorld(); // Persist changes to storage
-                        console.log('Character created.');
+                        const success = this.world.addCharacter(name, role, faction, mentorName);
+                        if (success) {
+                            this.world.saveWorld(); // Persist changes to storage
+                            console.log('Character created.');
+                        }
                         this.pause();
                     });
                 });
