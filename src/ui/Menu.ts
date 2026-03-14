@@ -182,11 +182,10 @@ export class Menu {
   }
 
   /**
-   * Uses ANSI escape codes to clear the terminal screen.
+   * Used to clear the terminal screen.
    */
   private clearConsole() {
-    //console.clear() wasn't used due to the terminal behaving oddly sometimes
-    process.stdout.write('\x1Bc');
+    console.clear();
   }
 
   /**
