@@ -17,7 +17,7 @@ export class World {
      */
     addFaction(name, leaderName) {
         if (!name.trim() || !leaderName.trim()) {
-            console.log('Error: Faction name and Leader name are required.');
+            console.log('Error: Faction name and Leader are required.');
             return false;
         }
         const faction = new Faction(this.formatName(name), this.formatName(leaderName));
@@ -62,6 +62,10 @@ export class World {
      */
     addCharacter(name, role, factionName, mentorName) {
         const faction = this.factions.find((f) => f.name === this.formatName(factionName));
+        if (!name.trim() || !role.trim() || !factionName.trim()) {
+            console.log('Error: Character name, role, and Faction are required.');
+            return false;
+        }
         if (!faction) {
             console.log('Faction not found.');
             return false;
