@@ -1,1 +1,1 @@
-{"version":3,"file":"Faction.d.ts","sourceRoot":"","sources":["Faction.ts"],"names":[],"mappings":"AAAA,qBAAa,OAAO;IAClB,IAAI,EAAE,MAAM,CAAC;IACb,UAAU,EAAE,MAAM,CAAC;gBAEP,IAAI,EAAE,MAAM,EAAE,UAAU,EAAE,MAAM;CAI7C"}
+{"version":3,"file":"Faction.d.ts","sourceRoot":"","sources":["Faction.ts"],"names":[],"mappings":"AAAA;;GAEG;AACH,qBAAa,OAAO;IAClB,IAAI,EAAE,MAAM,CAAC;IACb,UAAU,EAAE,MAAM,CAAC;gBAEP,IAAI,EAAE,MAAM,EAAE,UAAU,EAAE,MAAM;CAI7C"}

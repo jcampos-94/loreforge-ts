@@ -1,4 +1,7 @@
 import { Faction } from './Faction.js';
+/**
+ * Data model representing an individual entity within a faction.
+ */
 export declare class Character {
     name: string;
     role: string;

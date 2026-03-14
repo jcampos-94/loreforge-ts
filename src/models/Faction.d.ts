@@ -1,3 +1,6 @@
+/**
+ * Data model representing a group or organization within the world.
+ */
 export declare class Faction {
     name: string;
     leaderName: string;

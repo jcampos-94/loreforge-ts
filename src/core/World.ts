@@ -20,11 +20,18 @@ export class World {
    * Creates a new faction and automatically assigns the first leader as a character.
    */
   addFaction(name: string, leaderName: string): void {
-    const faction = new Faction(name, leaderName);
+    const faction = new Faction(
+      this.formatName(name),
+      this.formatName(leaderName),
+    );
     this.factions.push(faction);
 
     // Create and push the faction
-    const leader = new Character(leaderName, 'Leader', faction);
+    const leader = new Character(
+      this.formatName(leaderName),
+      'Leader',
+      faction,
+    );
     this.characters.push(leader);
   }
 
@@ -32,14 +39,16 @@ export class World {
    * Removes a faction. Fails if more than just the leader remains.
    */
   deleteFaction(name: string): void {
-    const faction = this.factions.find((f) => f.name === name);
+    const faction = this.factions.find((f) => f.name === this.formatName(name));
 
     if (!faction) {
       console.log('Faction not found.');
       return;
     }
 
-    const members = this.characters.filter((c) => c.faction.name === name);
+    const members = this.characters.filter(
+      (c) => c.faction.name === this.formatName(name),
+    );
 
     // Prevent deletion if the faction is still populated
     if (members.length > 1) {
@@ -61,8 +70,10 @@ export class World {
     }
 
     // Delete the faction
-    this.factions = this.factions.filter((f) => f.name !== name);
-    console.log(`Faction ${name} deleted.`);
+    this.factions = this.factions.filter(
+      (f) => f.name !== this.formatName(name),
+    );
+    console.log(`Faction ${this.formatName(name)} deleted.`);
   }
 
   /**
@@ -74,7 +85,9 @@ export class World {
     factionName: string,
     mentorName?: string,
   ): void {
-    const faction = this.factions.find((f) => f.name === factionName);
+    const faction = this.factions.find(
+      (f) => f.name === this.formatName(factionName),
+    );
 
     if (!faction) {
       console.log('Faction not found.');
@@ -82,27 +95,38 @@ export class World {
     }
 
     // Validation: Mentor must exist, be in the same faction, and not be the same person
-    if (mentorName && mentorName !== 'Unknown') {
-      const mentor = this.characters.find((c) => c.name === mentorName);
+    if (
+      (mentorName ? this.formatName(mentorName) : undefined) &&
+      (mentorName ? this.formatName(mentorName) : undefined) !== 'Unknown'
+    ) {
+      const mentor = this.characters.find(
+        (c) =>
+          c.name === (mentorName ? this.formatName(mentorName) : undefined),
+      );
 
       if (!mentor) {
         console.log('Mentor not found.');
         return;
       }
 
-      if (mentor.faction.name !== factionName) {
+      if (mentor.faction.name !== this.formatName(factionName)) {
         console.log('Mentor must belong to the same faction.');
         return;
       }
 
-      if (mentorName === name) {
+      if (mentorName === this.formatName(name)) {
         console.log('A character cannot mentor themselves.');
         return;
       }
     }
 
     // Create and push the character
-    const character = new Character(name, role, faction, mentorName);
+    const character = new Character(
+      this.formatName(name),
+      this.formatName(role),
+      faction,
+      mentorName ? this.formatName(mentorName) : undefined,
+    );
     this.characters.push(character);
   }
 
@@ -111,7 +135,9 @@ export class World {
    * If they were a mentor, their students are reassigned to the mentor's own mentor.
    */
   deleteCharacter(name: string): void {
-    const character = this.characters.find((c) => c.name === name);
+    const character = this.characters.find(
+      (c) => c.name === this.formatName(name),
+    );
 
     if (!character) {
       console.log('Character not found.');
@@ -124,13 +150,15 @@ export class World {
 
     // Inherit mentorship: Students of the deleted character move to the character's mentor
     for (const student of this.characters) {
-      if (student.mentorName === name) {
+      if (student.mentorName === this.formatName(name)) {
         student.mentorName = character.mentorName;
       }
     }
 
     // Delete the character
-    this.characters = this.characters.filter((c) => c.name !== name);
+    this.characters = this.characters.filter(
+      (c) => c.name !== this.formatName(name),
+    );
 
     const remainingMembers = this.characters.filter(
       (c) => c.faction.name === faction.name,
@@ -139,7 +167,7 @@ export class World {
     if (isLeader) {
       if (remainingMembers.length === 0) {
         // Cascade delete: Remove empty faction if leader was the last member
-        console.log(`Leader ${name} removed.`);
+        console.log(`Leader ${this.formatName(name)} removed.`);
         console.log(
           `Faction ${faction.name} has no members and will be deleted.`,
         );
@@ -156,11 +184,11 @@ export class World {
         faction.leaderName = newLeader.name;
         newLeader.role = 'Leader';
 
-        console.log(`Leader ${name} removed.`);
+        console.log(`Leader ${this.formatName(name)} removed.`);
         console.log(`New leader of ${faction.name}: ${newLeader.name}`);
       }
     } else {
-      console.log(`Character ${name} was deleted.`);
+      console.log(`Character ${this.formatName(name)} was deleted.`);
     }
   }
 
@@ -205,7 +233,9 @@ export class World {
    * Recursively prints the mentorship hierarchy starting from a specific character.
    */
   showMentorshipTree(name: string, level: number = 0): void {
-    const character = this.characters.find((c) => c.name === name);
+    const character = this.characters.find(
+      (c) => c.name === this.formatName(name),
+    );
 
     if (!character) {
       console.log('Character not found.');
@@ -283,5 +313,18 @@ export class World {
 
   getCharacters() {
     return this.characters;
+  }
+
+  // Formatting purposes
+
+  /**
+   * Helper to capitalize the first letter of every word (Title Case).
+   */
+  private formatName(name: string): string {
+    return name
+      .toLowerCase()
+      .split(' ')
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
   }
 }
